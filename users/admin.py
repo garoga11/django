@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Models
 from django.contrib.auth.models import User
-from user.models import Teacher, Student, Subject
+from users.models import Teacher, Student, Subject
 
 
 @admin.register(Teacher)
@@ -21,7 +21,7 @@ class TeacherAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'student', 'student_number', 'gruop']
+    list_display = ['id', 'student', 'student_number', 'group']
     list_display_links = ['id', 'student']
     list_editable = ['group']
     search_fields = ['student_email', 'student__created']
