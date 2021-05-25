@@ -21,7 +21,7 @@ class Teacher(models.Model):
 
 class Subject(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=CASCADE)
-    short_name = models.CharField(max_length=10, blanck=True)
+    short_name = models.CharField(max_length=10, blank=True)
     full_name = models.CharField(max_length=255, blank=True)
 
     class Meta:
@@ -43,7 +43,7 @@ class Student(models.Model):
         ("PI", "PI")
     ]
 
-    career = models.CharField(choices=CAREERS, max_lenght=50)
+    career = models.CharField(choices=CAREERS, max_length=50)
 
     class Meta:
         ordering = ['group', 'career', 'student_number']
