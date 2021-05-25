@@ -3,6 +3,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.deletion import CASCADE
 
 
 class Teacher(models.Model):
@@ -19,7 +20,15 @@ class Teacher(models.Model):
 
 
 class Subject(models.Model):
-    pass
+    teacher = models.ForeignKey(Teacher, on_delete=CASCADE)
+    short_name = models.CharField(max_length=10, blanck=True)
+    full_name = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        ordering = ['short_name']
+
+    def __str__(self):
+        return self.short_name
 
 
 class Student(models.Model):
