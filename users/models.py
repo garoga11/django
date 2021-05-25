@@ -13,7 +13,7 @@ class Teacher(models.Model):
     modified_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = {'title', 'created_at'}
+        ordering = ['title', 'created_at']
 
     def __str__(self):
         return self.teacher.get_full_name()
