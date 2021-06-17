@@ -1,0 +1,76 @@
+{% extends '../base.html' %}
+
+{% block head_content  %}
+    <title> Sign up </title>
+{% endblock head_content %}
+{% load  static %}
+
+{% block container %}
+<div class="container p-5 mt-3 LoginForm__container">
+    <div class="LoginForm__img">
+    <img src="{% static 'img/cactus.png' %}" alt="Logo">
+    </div>
+    <h3>Create a new account</h3>
+
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+
+        {% if error %}
+            <p class="alert alert-danger mb-2 mx-auto d-block" roler="alert">{{error}}</p>
+        {% endif %}
+
+        <div class="form-group">
+            <label class ="mb-1">Name</label>
+            <input 
+            type="text"
+            name="name"
+            placeholder="Name"
+            class="form-control">
+
+            <label class ="mb-1">lastname</label>
+            <input 
+            type="text"
+            name="lastname"
+            placeholder="Lastname"
+            class="form-control">
+
+            <label class ="mb-1">Email</label>
+            <input 
+            type="email"
+            name="email"
+            placeholder="email"
+            class="form-control">
+
+            <label class ="mb-1">Username</label>
+            <input 
+            type="text"
+            name="username"
+            placeholder="Username"
+            class="form-control">
+
+            <label class ="mb-1">Password</label>
+            <input 
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="form-control">
+            
+            <label class ="mb-1">Password confirmation</label>
+            <input 
+            type="password"
+            name="confirmpassword"
+            placeholder="Password"
+            class="form-control">
+
+            <label class ="mb-1">Select an option</label>
+            <select class="custom-select mx.auto d-block" type="text" name="type" requires="true" id="inlineFormCustomSelect">
+                <option selected> Select an option</option>
+                <option value="teacher"> Teacher</option>
+                <option value="student"> Student</option>
+            </select>
+        </div>
+        <button class="btn btc-success mx-auto mt-5 d-block px-4" type="submit">Sign up</button>
+    </form>
+</div>
+
+{% endblock container %}

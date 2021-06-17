@@ -1,0 +1,69 @@
+{% extends '../base.html' %}
+
+{% block head_content  %}
+    <title> Update student profile</title>
+{% endblock head_content %}
+{% load  static %}
+
+{% block container %}
+
+    <div class="container p-5 LoginForm__container">
+        <div class="LoginForm__img">
+            <img src="{% static 'img/bis.webp' %}" alt="Bis logo">
+        </div>
+        <h3 class="my-3">Update student profile</h3>
+
+        <form method="POST" action="{% url 'update_student_profile' %}" >
+        
+            {% csrf_token %}
+
+            {% if error %}
+                <p class="mt-2 alert alert-danger mb-2 mx-auto d-block" role="alert">{{error}}</p>
+            {% endif %}
+
+            <div class="form-group">
+                <label class="mb-1">Student Number</label>
+                <input
+                type= "text"
+                class="form-control"
+                name="student_number"
+                placeholder="Student number"/>
+            </div>
+            <div class="form-group">
+                <label class="mb-1">Group</label>
+                <input
+                type= "text"
+                class="form-control"
+                name="group"
+                placeholder="Group"/>
+            </div>
+            <label class="mb-1">Select your career</label>
+            <select class="custom-select mx-auto d-block" type="text" required="true" name="career" id="inlineFormCustomSelect">
+                <option selected>Select an option</option>
+                {% for option in career_option %}
+                    <option value="{{option}}">{{option}}</option>
+                {% endfor %}
+            </select>
+
+            <p class="my-3">Select your signatures</p>
+            {% for subject in subjects %}
+                <div class="form-group">
+                    <input 
+                    type="checkout" 
+                    class="ml-3" 
+                    value="{{subject.short_name}}" 
+                    name="{{subject.short_name}}"
+                    id="flexCheckDefault"
+                    >
+                    <label for="flexCheckDefault" class="ml-2">
+                        {{subject}}
+                    </label>
+                </div>
+            {% endfor %}
+
+            <button class ="btn btn-success mx-auto mt-5 d-block px-4" type="submit">Save</button>
+        </form>
+    </div>
+{% endblock container %}
+
+

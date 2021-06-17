@@ -1,0 +1,29 @@
+.NavHeader {
+  height: 60px;
+  box-shadow: 0 4px 2px -2px gray;
+  text-align: center;
+}
+.NavHeader__logo {
+  width: 50px;
+  margin-left: 10px;
+}
+/*Logo form*/
+.LoginForm__container{
+  display: flex;
+  width: 440px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  box-shadow: 0 0px 20px 6px rgba(0, 0, 0, 0.3);
+}
+.LoginForm__img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.LoginForm__img img{
+  width: 120px;
+
+}

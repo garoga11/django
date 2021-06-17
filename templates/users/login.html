@@ -1,0 +1,42 @@
+
+{% extends '../base.html' %}
+
+{% block head_content  %}
+    <title> Login </title>
+{% endblock head_content %}
+{% load  static %}
+
+{% block container %}
+<div class="container p-5 mt-3 LoginForm__container">
+    <div class="LoginForm__img">
+    <img src="{% static 'img/cactus.png' %}" alt="Logo">
+    </div>
+    <h3>Login</h3>
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% include "partials/_messages.html" %}
+        <div class="form-group">
+            <label class ="mb-1">Username</label>
+            <input 
+            type="text"
+            name="username"
+            placeholder="Username"
+            class="form-control">
+
+            <label class ="mb-1">Password</label>
+            <input 
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="form-control">
+
+        </div>
+        <button class="btn btc-success mx-auto mt-5 d-block px-4" type="submit">Login</button>
+        <div class="d-flex flex-column mt-4 form-footer">
+            <p class="m-auto"> Don't have an account? <a href="{% url 'signup' %}"> Sign up </a> </p>
+        </div>
+    </form>
+</div>
+
+{% endblock container %}
